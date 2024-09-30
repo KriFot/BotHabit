@@ -8,11 +8,12 @@ from aiogram import Dispatcher
 from dotenv import load_dotenv
 
 # Загружаем переменные окружения
-load_dotenv()
+load_dotenv(dotenv_path="C:\\Users\\nikit\\PycharmProjects\\habit_tracker_bot\\.evn")
 
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
 if not BOT_TOKEN:
-    raise ValueError("Токен бота не найден. Проверьте файл .env")
+    raise ValueError("токен бота не найден. Проверьте файл .env")
 
 
 bot = Bot(token=BOT_TOKEN)

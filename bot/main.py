@@ -1,39 +1,35 @@
 import os
 import asyncio
 import logging
+
 from aiogram import Bot, types
 from aiogram import Router
-from aiogram.filters import Command
+from aiogram.filters import Command 
 from aiogram import Dispatcher
+from aiogram.loggers import dispatcher
 from dotenv import load_dotenv
+
+from Handlers import router
+
 
 # Загружаем переменные окружения
 load_dotenv(dotenv_path="C:\\Users\\nikit\\PycharmProjects\\habit_tracker_bot\\.evn")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-
 if not BOT_TOKEN:
     raise ValueError("токен бота не найден. Проверьте файл .env")
 
 
+
 bot = Bot(token=BOT_TOKEN)
-router = Router()
-
-
-@router.message(Command('start'))
-async def send_welcome(message: types.Message):
-    await message.answer("привет!")
+dp = Dispatcher()
 
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
 
-    # Инициализация диспетчера и добавление маршрутизатора
-    dp = Dispatcher()
-    dp.include_router(router)
-
-    # запрос к тг
-    await dp.start_polling(bot)
+    dp.include_router(router)  #маршрутизатор
+    await dp.start_polling(bot)  # запрос к тг
 
 
 

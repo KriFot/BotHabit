@@ -60,12 +60,12 @@ async def send_message_at_time(chat_id: int, time_str: str):
     while True:
         current_time = datetime.now().strftime('%H:%M')
         if current_time == time_str:
-            print("лох")
+            print("2")
             await asyncio.sleep(60)
         await asyncio.sleep(1)
 
 @router.message(Command('StartTimeMes'))
 async def start_schedule(message: Message):
     chat_id = message.chat.id
-    await message.answer('кек')
-    asyncio.create_task(send_message_at_time(chat_id,"23:59"))
+    await message.answer('1')
+    asyncio.create_task(send_message_at_time(chat_id,"22:09"))

@@ -1,5 +1,14 @@
+import os
 import psycopg2
+from dotenv import load_dotenv
 from psycopg2 import OperationalError
+
+load_dotenv(dotenv_path="C:\\Users\\nikit\\PycharmProjects\\habit_tracker_bot\\.evn")
+db_name = str(os.getenv("db_name"))
+db_user = str(os.getenv("db_user"))
+db_password = str(os.getenv("db_password"))
+db_host = str(os.getenv("db_host"))
+db_port = int(os.getenv("db_port"))
 
 
 async def create_connection(db_name, db_user, db_password, db_host, db_port):
@@ -20,7 +29,7 @@ async def create_connection(db_name, db_user, db_password, db_host, db_port):
 
 async def Registri(userID):
     try:
-        conn = await create_connection("UsersID_DatBas", "postgres", "", "127.0.0.1", 5432)
+        conn = await create_connection(db_name, db_user, db_password, db_host, db_port)
         cursor = conn.cursor()
 
         cursor.execute(f"SELECT tgid FROM users WHERE tgid={userID}")

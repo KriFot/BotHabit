@@ -25,7 +25,7 @@ dp = Dispatcher()
 #доп функции
 
 async def set_bot_description():
-    description_text = "Я бот для отслеживания привычек. Для начала введи /start."
+    description_text = ("Я бот для отслеживания привычек. Нажав /start, вы соглашаетесь с обработкой персональных данных. \n \n Для начала нажмите /start.")
     await bot.set_my_description(description_text)
 
 

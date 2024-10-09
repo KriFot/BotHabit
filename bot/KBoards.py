@@ -9,9 +9,10 @@ greet = InlineKeyboardMarkup(inline_keyboard=[
  ])
 
 
-teft=['1','2','3']
+teft=['1','2','3', '4']
+kall=['SartTimer',"new","redact"]
 async def catteft():
     keyboard = InlineKeyboardBuilder()
-    for n in teft:
-        keyboard.add(InlineKeyboardButton(text=n, url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
+    for n, callback in zip(teft, kall):  # Объединяем значения и колбэки
+        keyboard.add(InlineKeyboardButton(text=n, callback_data=callback))  # Используем callback_data
     return keyboard.adjust(2).as_markup()
